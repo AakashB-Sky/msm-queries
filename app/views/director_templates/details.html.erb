@@ -45,3 +45,25 @@
     <th>Director</th>
     <th></th>
   </tr>
+
+  <% @filmography.each do |the_movie| %>
+    <tr>
+      <td><%= the_movie.id %></td>
+
+      <td>
+        <img src="<%= the_movie.image %>" style="width:250px">
+      </td>
+
+      <td><%= the_movie.title %></td>
+
+      <td><%= the_movie.year %></td>
+
+      <td><%= @the_director.name %></td>
+
+      <td>
+        <a href="/movies/<%= the_movie.id %>">
+          Show details
+        </a>
+      </td>
+    </tr>
+  <% end %>
