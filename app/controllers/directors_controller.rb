@@ -24,7 +24,11 @@ class DirectorsController < ApplicationController
     render({ :template => "director_templates/eldest_director" })
   end
 
-  def youngest 
+  def youngest
+    youngest_dob = Director.where.not({ :dob => nil }).maximum(:dob) # returns most recent dob in 'directors' table
+    matching_records = Director.where({ :dob => youngest_dob }) # returns relation of all directors with youngest_dob
+    @youngest_director = matching_records[0] # would be good to put if condition validating there is only one youngest director
+
     render({ :template => "director_templates/youngest_director" })
   end
 end
