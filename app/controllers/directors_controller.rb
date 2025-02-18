@@ -17,6 +17,10 @@ class DirectorsController < ApplicationController
   end
 
   def eldest
+    oldest_dob = Director.where.not({ :dob => nil }).minimum(:dob) # returns oldest dob in 'directors' table
+    matching_records = Director.where({ :dob => oldest_dob }) # returns relation of all directors with oldest_dob
+    @oldest_director = matching_records[0] # would be good to put if condition validating there is only one eldest director
+
     render({ :template => "director_templates/eldest_director" })
   end
 
