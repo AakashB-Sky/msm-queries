@@ -27,7 +27,7 @@ class ActorsController < ApplicationController
       # get movie director name
       director_name = Director.where({ :id => the_movie.director_id })[0].name
       # get character name
-      character_name = the_character
+      character_name = the_character.name
       
       # push all of this information into a hash
       filmography_hash = { :movie_title => movie_title, :movie_year => movie_year, :director => director_name, :character => character_name, :movie_id => movie_id }
