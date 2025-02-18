@@ -43,4 +43,17 @@
     <th>Character Name</th>
     <th></th>
   </tr>
+
+  <% @actor_filmography.each do |role| %>
+    <tr>
+      <td><%= role.fetch(:movie_title) %></td>
+      <td><%= role.fetch(:movie_year) %></td>
+      <td><%= role.fetch(:director) %></td>
+      <td><%= role.fetch(:character) %></td>
+      <td>
+        <a href="/movies/<%= role.fetch(:movie_id) %>">
+          Show details
+        </a>
+    </tr>
+  <% end  %>
 </table>
